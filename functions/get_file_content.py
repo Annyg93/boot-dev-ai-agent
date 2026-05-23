@@ -1,9 +1,25 @@
 import os
 from agent.config import MAX_CHARS
+from google.genai import types
+
+
+schema_get_file_content = types.FunctionDeclaration(
+    name="get_file_content",
+    description="After validating, Reads the first 10 000 characters of a valid file",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="Reads the first 10 0000 characters of the specified files contents"
+            )
+        },
+        required=["file_path"]
+    )
+)
 
 
 def get_file_content(working_directory, file_path):
-
     try:
         absolute_working_dir = os.path.abspath(working_directory)
         absolute_file_path = os.path.normpath(os.path.join(absolute_working_dir, file_path))

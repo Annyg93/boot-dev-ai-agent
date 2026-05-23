@@ -18,7 +18,6 @@ schema_get_files_info = types.FunctionDeclaration(
 
 
 def get_files_info(working_directory, directory="."):
-
     try:
         absolute_working_dir = os.path.abspath(working_directory)
         absolute_file_path = os.path.normpath(os.path.join(absolute_working_dir, directory))
