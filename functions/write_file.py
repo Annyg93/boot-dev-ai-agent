@@ -4,17 +4,17 @@ from google.genai import types
 
 schema_write_file = types.FunctionDeclaration(
     name="write_file",
-    description="Validates the file & directory, creating directories if needed, and writes input to the file in question",
+    description="Writes text content to a specified file within the working directory (overwriting if the file exists)",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
             "file_path": types.Schema(
                 type=types.Type.STRING,
-                description="Path to the file that is to be written",
+                description="Path to the file that is to be written, relative to the working directory",
             ),
             "content": types.Schema(
                 type=types.Type.STRING,
-                description="The content which shall be written to the file"
+                description="The content to be written to the file"
             )
         },
         required=["file_path", "content"]

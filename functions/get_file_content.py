@@ -5,13 +5,13 @@ from google.genai import types
 
 schema_get_file_content = types.FunctionDeclaration(
     name="get_file_content",
-    description="After validating, Reads the first 10 000 characters of a valid file",
+    description=f"Retrieves the content (max {MAX_CHARS} characters) of a specified file within the working directory",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
             "file_path": types.Schema(
                 type=types.Type.STRING,
-                description="Reads the first 10 0000 characters of the specified files contents"
+                description="Path to the file to read, relative to the working directory"
             )
         },
         required=["file_path"]

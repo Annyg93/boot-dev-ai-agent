@@ -5,21 +5,20 @@ from google.genai import types
 
 schema_run_python_file = types.FunctionDeclaration(
     name="run_python_file",
-    description="Runs the python file specified within the file path with optional args",
+    description="Runs a specified Python file within the working directory and returns its output",
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
             "file_path": types.Schema(
                 type=types.Type.STRING,
-                description="Path to the file that is to be run",
+                description="Path to the Python file that is to be run, relative to the working directory",
             ),
             "args": types.Schema(
                 type=types.Type.ARRAY,
-                description="An optional list of strings that contains optional args",
                 items=types.Schema(
                     type=types.Type.STRING,
-                    description="Args in string"
                 ),
+                description="Optional list of arguments to pass to the Python script"
             )
         },
         required=["file_path"]
