@@ -1,6 +1,6 @@
 from google.genai import types
 from collections.abc import Callable
-from config import WORKING_DIR
+from agent.config import WORKING_DIR
 
 from functions.get_files_info import schema_get_files_info, get_files_info
 from functions.get_file_content import schema_get_file_content, get_file_content
