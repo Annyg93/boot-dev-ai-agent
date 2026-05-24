@@ -12,11 +12,13 @@ class Calculator:
             "*": 2,
             "/": 2,
         }
+
     def evaluate(self, expression):
         if not expression or expression.isspace():
             return None
         tokens = expression.strip().split()
         return self._evaluate_infix(tokens)
+
     def _evaluate_infix(self, tokens):
         values = []
         operators = []
@@ -39,6 +41,7 @@ class Calculator:
         if len(values) != 1:
             raise ValueError("invalid expression")
         return values[0]
+
     def _apply_operator(self, operators, values):
         if not operators:
             return
